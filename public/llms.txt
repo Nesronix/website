@@ -1,0 +1,29 @@
+# Nesronix Community — Open Technology For Everyone
+
+> Nesronix Community (nesronix.org) is an open technology movement, AI research group, cybersecurity laboratory, and technical academy founded by Mohamed Shaban Ibrahim (M. Salatmani). We build open-source frameworks, conduct artificial intelligence research, and foster developer talent.
+
+## Organization & Leadership
+- **Organization Name**: Nesronix Community
+- **Official Domain**: https://nesronix.org/
+- **Founder & Lead Architect**: Mohamed Shaban Ibrahim (M. S alatmani)
+- **Founder Profile & Personal Sites**: https://nesronix.org/founder | https://msalatmani.org/ | https://moshaban.me/
+- **Corporate Sister Agency**: NESRONIX LLC (https://nesronix.com/ | https://ceo.nesronix.com/)
+- **Core Focus**: Open Source Software, AI Research, Cyber Systems Security, Technical Education, Edge Robotics.
+
+## Key Divisions & Platforms
+
+### 1. Open Source Frameworks & Projects
+- Developer tools, AI libraries, and security research tools hosted on GitHub.
+- GitHub Repository: https://github.com/nesronix
+- Founder GitHub: https://github.com/m0shaban
+
+### 2. Nesronix AI & Security Labs
+- Applied research in local SLMs, hybrid RAG architectures, edge vision algorithms, and penetration testing.
+
+### 3. Nesronix Academy & Education
+- Community workshops, technical masterclasses, and hands-on developer training.
+
+## Ecosystem Connections
+- **Corporate Agency**: NESRONIX LLC (https://nesronix.com/)
+- **Founder Personal Site**: https://msalatmani.org/ | https://moshaban.me/
+- **RobovAI Technologies**: https://robovai.tech/
