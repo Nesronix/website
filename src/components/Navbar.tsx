@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ActiveTab } from '../types';
 import { 
   Globe, 
@@ -10,7 +10,9 @@ import {
   FileText, 
   Sparkles,
   MessageSquare,
-  Building
+  Building,
+  Menu,
+  X
 } from 'lucide-react';
 
 interface NavbarProps {
@@ -20,6 +22,8 @@ interface NavbarProps {
 }
 
 export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenJoinModal }) => {
+  const [mobileOpen, setMobileOpen] = useState(false);
+
   const navItems: { id: ActiveTab; label: string; icon: React.ElementType }[] = [
     { id: 'home', label: 'Home', icon: Globe },
     { id: 'ecosystem', label: 'Ecosystem', icon: Building },
@@ -40,8 +44,13 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenJ
             className="flex items-center gap-3 cursor-pointer group"
             onClick={() => setActiveTab('home')}
           >
-            <div className="relative w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-cyan-500 flex items-center justify-center shadow-lg shadow-blue-500/25 group-hover:scale-105 transition-all">
-              <span className="font-extrabold text-xl text-white tracking-wider">N</span>
+            <div className="relative w-11 h-11 flex items-center justify-center group-hover:scale-105 transition-all">
+              <img
+                src="/logo-community.png"
+                alt="Nesronix Community Logo"
+                className="w-11 h-11 object-contain drop-shadow-md"
+              />
+              {/* Live pulse indicator */}
               <span className="absolute -bottom-1 -right-1 flex h-3 w-3">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-3 w-3 bg-cyan-500"></span>
@@ -113,30 +122,56 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, onOpenJ
               <Sparkles className="w-4 h-4" />
               <span>Join Us</span>
             </button>
+
+            {/* Mobile hamburger */}
+            <button
+              className="lg:hidden p-2 rounded-lg text-slate-600 hover:bg-slate-100 transition-colors"
+              onClick={() => setMobileOpen(!mobileOpen)}
+            >
+              {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            </button>
           </div>
 
         </div>
       </div>
 
-      {/* Mobile Nav Bar */}
-      <div className="lg:hidden flex items-center justify-around py-2.5 px-2 bg-white border-t border-slate-200 overflow-x-auto">
-        {navItems.map((item) => {
-          const Icon = item.icon;
-          const isActive = activeTab === item.id;
-          return (
-            <button
-              key={item.id}
-              onClick={() => setActiveTab(item.id)}
-              className={`flex flex-col items-center gap-1 px-3 py-1 rounded-md text-xs transition-all ${
-                isActive ? 'text-blue-600 font-semibold' : 'text-slate-500'
-              }`}
-            >
-              <Icon className="w-4 h-4" />
-              <span>{item.label}</span>
-            </button>
-          );
-        })}
-      </div>
+      {/* Mobile Dropdown Nav */}
+      {mobileOpen && (
+        <div className="lg:hidden bg-white border-t border-slate-200 shadow-lg">
+          <nav className="flex flex-col p-3 gap-1">
+            {navItems.map((item) => {
+              const Icon = item.icon;
+              const isActive = activeTab === item.id;
+              return (
+                <button
+                  key={item.id}
+                  onClick={() => { setActiveTab(item.id); setMobileOpen(false); }}
+                  className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all ${
+                    isActive
+                      ? 'bg-blue-50 text-blue-600 border border-blue-200 font-semibold'
+                      : 'text-slate-600 hover:bg-slate-50'
+                  }`}
+                >
+                  <Icon className={`w-4 h-4 ${isActive ? 'text-blue-600' : 'text-slate-400'}`} />
+                  <span>{item.label}</span>
+                </button>
+              );
+            })}
+            <div className="border-t border-slate-100 mt-2 pt-2 flex flex-col gap-2">
+              <a href="https://github.com/nesronix" target="_blank" rel="noreferrer"
+                className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-50 text-slate-700 text-sm font-medium"
+              >
+                <Github className="w-4 h-4" /><span>GitHub</span>
+              </a>
+              <a href="https://discord.gg/nesronix" target="_blank" rel="noreferrer"
+                className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-indigo-50 text-indigo-700 text-sm font-medium"
+              >
+                <MessageSquare className="w-4 h-4" /><span>Discord</span>
+              </a>
+            </div>
+          </nav>
+        </div>
+      )}
     </header>
   );
 };
