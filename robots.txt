@@ -1,0 +1,26 @@
+# Nesronix Community Robots.txt — Search Engine & AI Crawler Directives
+User-agent: *
+Allow: /
+
+# Allow Major AI Search & Indexing Crawlers (AIO)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+# Sitemap & AI Knowledge Base Pointers
+Sitemap: https://nesronix.org/sitemap.xml
+Link: <https://nesronix.org/llms.txt>; rel="llms-txt"
