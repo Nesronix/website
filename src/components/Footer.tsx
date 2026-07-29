@@ -143,8 +143,10 @@ export const Footer: React.FC = () => {
           <div>
             © 2026 Nesronix Open Source & Community. All rights reserved.
           </div>
-          <div className="flex items-center gap-4">
+          <div className="flex flex-wrap items-center gap-4">
             <span>nesronix.org</span>
+            <span>•</span>
+            <a href="https://msalatmani.org" target="_blank" rel="noreferrer" className="hover:text-slate-300 font-bold text-blue-400">msalatmani.org</a>
             <span>•</span>
             <a href="https://github.com/nesronix" target="_blank" rel="noreferrer" className="hover:text-slate-300">github.com/nesronix</a>
             <span>•</span>

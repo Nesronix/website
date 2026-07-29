@@ -6,7 +6,8 @@ export type ActiveTab =
   | 'academy'
   | 'community'
   | 'governance'
-  | 'contact';
+  | 'contact'
+  | 'founder';
 
 export interface ProjectItem {
   id: string;

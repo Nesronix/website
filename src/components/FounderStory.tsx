@@ -10,11 +10,14 @@ import {
   ArrowRight,
 } from 'lucide-react';
 
+import { ActiveTab } from '../types';
+
 interface FounderStoryProps {
   onOpenJoinModal: () => void;
+  setActiveTab?: (tab: ActiveTab) => void;
 }
 
-export const FounderStory: React.FC<FounderStoryProps> = ({ onOpenJoinModal }) => {
+export const FounderStory: React.FC<FounderStoryProps> = ({ onOpenJoinModal, setActiveTab }) => {
   const milestones = [
     {
       icon: Brain,
@@ -68,7 +71,7 @@ export const FounderStory: React.FC<FounderStoryProps> = ({ onOpenJoinModal }) =
               Nesronix started as a personal conviction: that the most impactful technology gets built
               collaboratively, openly, and with no gatekeeping. The founder —&nbsp;
               <a
-                href="https://moshaban.me"
+                href="https://msalatmani.org"
                 target="_blank"
                 rel="noreferrer"
                 className="text-blue-600 font-semibold hover:underline inline-flex items-center gap-0.5"
@@ -110,13 +113,23 @@ export const FounderStory: React.FC<FounderStoryProps> = ({ onOpenJoinModal }) =
                 <ArrowRight className="w-4 h-4" />
               </button>
 
+              {setActiveTab && (
+                <button
+                  onClick={() => setActiveTab('founder')}
+                  className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-blue-50 hover:bg-blue-100 text-blue-800 font-bold text-sm border border-blue-200 transition-all"
+                >
+                  <span>Founder Profile</span>
+                  <ArrowRight className="w-4 h-4 text-blue-600" />
+                </button>
+              )}
+
               <a
-                href="https://moshaban.me"
+                href="https://msalatmani.org"
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-semibold text-sm border border-slate-200 transition-all"
               >
-                <span>See Founder's Work</span>
+                <span>msalatmani.org</span>
                 <ExternalLink className="w-4 h-4" />
               </a>
             </div>

@@ -35,7 +35,7 @@ export const Hero: React.FC<HeroProps> = ({ setActiveTab, onOpenJoinModal }) => 
             <span>
               Founded by&nbsp;
               <a
-                href="https://moshaban.me"
+                href="https://msalatmani.org"
                 target="_blank"
                 rel="noreferrer"
                 className="text-blue-600 hover:underline font-bold"

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ActiveTab } from './types';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
@@ -10,11 +10,55 @@ import { Academy } from './components/Academy';
 import { Community } from './components/Community';
 import { Governance } from './components/Governance';
 import { JoinModal } from './components/JoinModal';
+import { FounderPage } from './components/FounderPage';
 import { Footer } from './components/Footer';
 
+const detectInitialTab = (): ActiveTab => {
+  const host = window.location.hostname.toLowerCase();
+  const path = window.location.pathname.toLowerCase().replace(/\/$/, '');
+  const hash = window.location.hash.toLowerCase().replace('#', '');
+
+  if (host.startsWith('founder.') || path === '/founder' || path.startsWith('/founder/') || hash === 'founder') {
+    return 'founder';
+  }
+  const validTabs: ActiveTab[] = ['home', 'ecosystem', 'projects', 'labs', 'academy', 'community', 'governance', 'contact', 'founder'];
+  if (validTabs.includes(hash as ActiveTab)) {
+    return hash as ActiveTab;
+  }
+  const cleanPath = path.replace(/^\//, '') as ActiveTab;
+  if (validTabs.includes(cleanPath)) {
+    return cleanPath;
+  }
+  return 'home';
+};
+
 export const App: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<ActiveTab>('home');
+  const [activeTab, setActiveTabState] = useState<ActiveTab>(detectInitialTab);
   const [isJoinModalOpen, setIsJoinModalOpen] = useState<boolean>(false);
+
+  const handleSetActiveTab = (tab: ActiveTab) => {
+    setActiveTabState(tab);
+    if (tab === 'founder') {
+      window.history.pushState({}, '', '/founder');
+    } else if (tab === 'home') {
+      window.history.pushState({}, '', '/');
+    } else {
+      window.history.pushState({}, '', `/${tab}`);
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  useEffect(() => {
+    const syncRoute = () => {
+      setActiveTabState(detectInitialTab());
+    };
+    window.addEventListener('popstate', syncRoute);
+    window.addEventListener('hashchange', syncRoute);
+    return () => {
+      window.removeEventListener('popstate', syncRoute);
+      window.removeEventListener('hashchange', syncRoute);
+    };
+  }, []);
 
   const openJoin = () => setIsJoinModalOpen(true);
   const closeJoin = () => setIsJoinModalOpen(false);
@@ -25,7 +69,7 @@ export const App: React.FC = () => {
       {/* Navbar */}
       <Navbar
         activeTab={activeTab}
-        setActiveTab={setActiveTab}
+        setActiveTab={handleSetActiveTab}
         onOpenJoinModal={openJoin}
       />
 
@@ -33,8 +77,8 @@ export const App: React.FC = () => {
       <main className="flex-grow">
         {activeTab === 'home' && (
           <>
-            <Hero setActiveTab={setActiveTab} onOpenJoinModal={openJoin} />
-            <FounderStory onOpenJoinModal={openJoin} />
+            <Hero setActiveTab={handleSetActiveTab} onOpenJoinModal={openJoin} />
+            <FounderStory onOpenJoinModal={openJoin} setActiveTab={handleSetActiveTab} />
             <Ecosystem />
             <Projects />
             <Labs onOpenJoinModal={openJoin} />
@@ -50,6 +94,7 @@ export const App: React.FC = () => {
         {activeTab === 'academy' && <Academy onOpenJoinModal={openJoin} />}
         {activeTab === 'community' && <Community onOpenJoinModal={openJoin} />}
         {activeTab === 'governance' && <Governance />}
+        {activeTab === 'founder' && <FounderPage setActiveTab={handleSetActiveTab} onOpenJoinModal={openJoin} />}
       </main>
 
       {/* Footer */}
