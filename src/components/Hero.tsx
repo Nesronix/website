@@ -93,7 +93,7 @@ export const Hero: React.FC<HeroProps> = ({ setActiveTab, onOpenJoinModal }) => 
             </a>
 
             <a
-              href="https://discord.gg/nesronix"
+              href="https://discord.gg/gp6uB8sxu"
               target="_blank"
               rel="noreferrer"
               className="flex items-center gap-2 px-6 py-3.5 rounded-xl bg-indigo-50 border border-indigo-200 text-indigo-700 hover:bg-indigo-100 font-bold transition-all hover:scale-105"

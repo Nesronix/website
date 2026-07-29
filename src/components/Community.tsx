@@ -49,7 +49,7 @@ export const Community: React.FC<CommunityProps> = ({ onOpenJoinModal }) => {
           </div>
 
           <a
-            href="https://discord.gg/nesronix"
+            href="https://discord.gg/gp6uB8sxu"
             target="_blank"
             rel="noreferrer"
             className="flex-shrink-0 flex items-center gap-2 px-8 py-4 rounded-xl bg-white hover:bg-slate-100 text-indigo-950 font-bold text-sm shadow-xl transition-all hover:scale-105"

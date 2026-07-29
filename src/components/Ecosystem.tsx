@@ -36,7 +36,7 @@ export const Ecosystem: React.FC = () => {
       color: 'from-blue-600 to-cyan-600',
       description: 'The vibrant developer community hub providing Discord channels, tech meetups, global hackathons, and direct mentorship.',
       items: ['Global Discord Server', 'Bi-weekly Technical Meetups', '48-Hour Global Hackathons', '1-on-1 Developer Mentorship'],
-      link: 'https://discord.gg/nesronix',
+      link: 'https://discord.gg/gp6uB8sxu',
       buttonText: 'Join Discord Hub'
     },
     {

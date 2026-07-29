@@ -45,11 +45,11 @@ export const Footer: React.FC = () => {
                 <Github className="w-4 h-4 text-blue-400" />
               </a>
               <a
-                href="https://discord.gg/nesronix"
+                href="https://discord.gg/gp6uB8sxu"
                 target="_blank"
                 rel="noreferrer"
-                className="p-2.5 rounded-xl bg-indigo-950/50 hover:bg-indigo-900/50 text-indigo-300 hover:text-white transition-colors border border-indigo-800/50"
-                title="Discord Server"
+                className="w-10 h-10 rounded-xl bg-slate-100 border border-slate-200 flex items-center justify-center text-indigo-600 hover:bg-indigo-50 hover:border-indigo-200 transition-all"
+                title="Discord Community"
               >
                 <MessageSquare className="w-4 h-4" />
               </a>
