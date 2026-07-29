@@ -12,6 +12,7 @@ import { Governance } from './components/Governance';
 import { JoinModal } from './components/JoinModal';
 import { FounderPage } from './components/FounderPage';
 import { Footer } from './components/Footer';
+import { updateSEOMeta } from './utils/seo';
 
 const detectInitialTab = (): ActiveTab => {
   const host = window.location.hostname.toLowerCase();
@@ -35,6 +36,11 @@ const detectInitialTab = (): ActiveTab => {
 export const App: React.FC = () => {
   const [activeTab, setActiveTabState] = useState<ActiveTab>(detectInitialTab);
   const [isJoinModalOpen, setIsJoinModalOpen] = useState<boolean>(false);
+
+  // Sync SEO Title, Description, Open Graph & Canonical meta on tab change
+  useEffect(() => {
+    updateSEOMeta(activeTab);
+  }, [activeTab]);
 
   const handleSetActiveTab = (tab: ActiveTab) => {
     setActiveTabState(tab);

@@ -29,6 +29,46 @@
         }
       }(window.location));
     </script>
+
+    <!-- JSON-LD Structured Data Schema (Organization & Founder Person) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://nesronix.org/#organization",
+            "name": "Nesronix Community",
+            "url": "https://nesronix.org",
+            "logo": "https://nesronix.org/favicon.ico",
+            "sameAs": [
+              "https://github.com/nesronix",
+              "https://nesronix.com"
+            ],
+            "founder": {
+              "@id": "https://nesronix.org/#founder"
+            }
+          },
+          {
+            "@type": "Person",
+            "@id": "https://nesronix.org/#founder",
+            "name": "Mohamed Shaban Ibrahim",
+            "alternateName": "Mohamed Shaban Al-Satmani",
+            "jobTitle": "Intelligence Systems Architect & Founder",
+            "worksFor": {
+              "@id": "https://nesronix.org/#organization"
+            },
+            "sameAs": [
+              "https://msalatmani.org",
+              "https://github.com/m0shaban",
+              "https://linkedin.com/in/msalatmani",
+              "https://robovai.tech"
+            ],
+            "url": "https://nesronix.org/founder"
+          }
+        ]
+      }
+    </script>
   </head>
   <body class="bg-slate-50 text-slate-900 font-sans antialiased selection:bg-blue-600 selection:text-white overflow-x-hidden">
     <div id="root"></div>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://nesronix.org/sitemap.xml
